@@ -1,0 +1,2 @@
+Len
+Len will tell you the length of a list or how many bytes are in a bytes.

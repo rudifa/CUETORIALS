@@ -25,7 +25,8 @@ func LoadingAndPrintingCUECode() {
 	ctx := cuecontext.New()
 
 	// The entrypoints are the same as the files you'd specify at the command line
-	entrypoints := []string{"hello.cue"}
+	// entrypoints := []string{"hello.cue"}
+	entrypoints := []string{"album.json", "album.cue"}
 
 	// Load Cue files into Cue build.Instances slice
 	// the second arg is a configuration object, we'll see this later

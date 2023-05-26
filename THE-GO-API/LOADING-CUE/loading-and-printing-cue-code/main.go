@@ -15,8 +15,6 @@ func main() {
 // Loading and Printing CUE Code
 // This first example shows how to load and build CUE from entrypoints like the cue CLI commands.
 
-
-
 func LoadingAndPrintingCUECode() {
 
 	fmt.Println("--- LoadingAndPrintingCUECode:")

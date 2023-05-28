@@ -56,21 +56,24 @@ func compilingWith() {
 
 // Compiling with a Scope
 
-const schema = `
+func compileWithScope() {
+	// If you have schemas in one string and values in another,
+	// you can use the cue.Scope option to provide a “context” for the cue.Context.
+
+	const schema = `
 #schema: {
 	i: int
 	s: string
 }
 `
 
-const val2 = `
+	const val2 = `
 v: #schema & {
 	i: 1
 	s: "hello"
 }
 `
 
-func compileWithScope() {
 	var (
 		c *cue.Context
 		s cue.Value

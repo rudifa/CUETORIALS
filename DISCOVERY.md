@@ -43,3 +43,10 @@ Another look at the Cuetorials examples, working on strings defined within the c
 
 ...
 
+- I would do well if I listed all functions used in the Cuetorials examples and study the docs for each one, then apply them.
+
+like, what's `cue.Filename("val.cue")`
+
+
+
+

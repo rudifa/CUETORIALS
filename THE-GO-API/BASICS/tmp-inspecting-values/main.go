@@ -31,8 +31,6 @@ func LookupPath_Path() {
 	d, _ := os.ReadFile("value.cue")
 	val := c.CompileBytes(d)
 
-	fmt.Println("=== val:", val)
-
 	paths := []string{
 		"a",
 		"d.f",
@@ -40,7 +38,7 @@ func LookupPath_Path() {
 	}
 
 	for _, path := range paths {
-		fmt.Printf("=== path:  %s\n", path)
+		fmt.Printf("====  %s  ====\n", path)
 		v := val.LookupPath(cue.ParsePath(path))
 		p := v.Path()
 		fmt.Printf("%q\n%# v\n", p, v)
@@ -65,7 +63,7 @@ func ReferencePath_Dereference() {
 	}
 
 	for _, path := range paths {
-		fmt.Printf("==== path: %s\n", path)
+		fmt.Printf("====  %s  ====\n", path)
 		v := val.LookupPath(cue.ParsePath(path))
 		p := v.Path()
 		_, r := v.ReferencePath()
@@ -97,7 +95,7 @@ func Exists_IsConcrete() {
 	}
 
 	for _, path := range paths {
-		fmt.Printf("==== path: %s\n", path)
+		fmt.Printf("====  %s  ====\n", path)
 		v := val.LookupPath(cue.ParsePath(path))
 		p := v.Path()
 		x := v.Exists()

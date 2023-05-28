@@ -47,6 +47,24 @@ Another look at the Cuetorials examples, working on strings defined within the c
 
 like, what's `cue.Filename("val.cue")`
 
+| function call| args | result | comment |
+| :------- | :------- | :------- | :------- |
+| c := cuecontext.New() | - | cue.Context | create a context |
+| v := c.CompileString(schema) | string | cue.Value | compile a string |
+| v := c.CompileString(val2, cue.Scope(v1)) | string, BuildOption | cue.Value | compile a string with scope |
+| bop := cue.Scope(v) | cue.Value | cue.BuildOption | A BuildOption defines options for the various build-related methods of Context.|
+| cue.Filename("sch.cue") | string | cue.BuildOption | Filename assigns a filename to parsed content. |
+| Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
+| Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
+| Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
+| Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
 
+	// 
+	c = cuecontext.New()
 
+	// compile our schema first
+	s = c.CompileString(schema)
+
+	// compile our value with scope
+	v = c.CompileString(val, cue.Scope(s))
 

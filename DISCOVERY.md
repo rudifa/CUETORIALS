@@ -95,3 +95,15 @@ Here is a start, in no particular order:
 | --show-optional |display optional fields |-|y | -| -| -| -| -|
 | --with-context | import as object with contextual data | y |y | y| y| y|
 | | | | | | | |
+
+## --schema
+
+```
+cue % grep.go '\-\-schema'                                                                                                        [try-split-off-api L|✚1…1]
+cmd/cue/cmd/common.go:597:                              "cannot use --schema/-d with flag more than one schema")
+cmd/cue/cmd/common.go:647:                              "-d/--schema flag specified without a schema")
+cmd/cue/cmd/common.go:704:              b.schema, err = parser.ParseExpr("--schema", s)
+cmd/cue/cmd/help.go:125:If the --schema/-d is specified, data files are not merged, and
+cmd/cue/cmd/help.go:158:when used in combination with the --schema/-d flag.
+```
+would code at `cmd/cue/cmd/common.go:704` be of any use?

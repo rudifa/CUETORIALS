@@ -47,6 +47,8 @@ Another look at the Cuetorials examples, working on strings defined within the c
 
 like, what's `cue.Filename("val.cue")`
 
+Here is a start, in no particular order:
+
 | function call| args | result | comment |
 | :------- | :------- | :------- | :------- |
 | c := cuecontext.New() | - | cue.Context | create a context |
@@ -59,12 +61,37 @@ like, what's `cue.Filename("val.cue")`
 | Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
 | Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
 
-	// 
-	c = cuecontext.New()
+	
+- My immediate objective: write a minimal replica of the `cue vet`command, supporting the `options --concrete` and `--schema <schema def>` and expecting a `.cue` schema file and a `.json` data file.
 
-	// compile our schema first
-	s = c.CompileString(schema)
 
-	// compile our value with scope
-	v = c.CompileString(val, cue.Scope(s))
+## Cue command options
 
+| flag | info | def | eval | export | import | vet |
+| :------- | :------- | :------- | :------- | :------- | :------- |:------- |
+| --all| show optional and hidden fields|- | y| -| -|- |
+| --concrete| require the evaluation to be concrete| -|y | -| -| y|
+| --dryrun | only run simulation| -|- |- | y|- |
+| --escape | use HTML escaping| -|- |y | -| -|
+| --expression | evaluate this expression only | y | y| y| -| -|
+| --ext| match files with these extensions| -| -|- |y | -|
+| --force | force overwriting existing files |  y | y| -| y|- |
+| --help | help for def | y |y|y| y| y|
+| --inject  | set the value of a tagged field | y | y|y |- |y |
+| --inject-vars  | inject system variables in tags | y |y | y| -| y|
+| --inline-imports | expand references to non-core imports | y |- | -| -| -|
+| --list | concatenate multiple objects into a list | y | y| y| y| y|
+| --merge   | merge non-CUE files (default true) | y | y| y| y| y|
+| --name | glob filter for non-CUE file names in directories | y | y| y| y| y|
+| --out | output format (run 'cue filetypes' for more info) | y | y| y| -| -|
+| --outfile|filename or - for stdout with optional file prefix (run 'cue filetypes' for more info) | y| y|y | y| -|
+| --package | package name for non-CUE files | y | y| y| y|y |
+| --path | CUE expression for single path component | y | y| y| y| y|
+| --proto_enum | mode for rendering enums (int \| json) (default "int") | y | y| y|y | y|
+| --proto_path | paths in which to search for imports| y | y| y| y| y|
+| --schema | expression to select schema for evaluating values in non-CUE files | y | y| y| y|y |
+| --show-attributes | display field attributes | y | y|- |- | -|
+| --show-hidden | display hidden fields|- | y| -|- | -|
+| --show-optional |display optional fields |-|y | -| -| -| -| -|
+| --with-context | import as object with contextual data | y |y | y| y| y|
+| | | | | | | |

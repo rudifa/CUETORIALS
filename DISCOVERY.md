@@ -56,13 +56,11 @@ Here is a start, in no particular order:
 | v := c.CompileString(val2, cue.Scope(v1)) | string, BuildOption | cue.Value | compile a string with scope |
 | bop := cue.Scope(v) | cue.Value | cue.BuildOption | A BuildOption defines options for the various build-related methods of Context.|
 | cue.Filename("sch.cue") | string | cue.BuildOption | Filename assigns a filename to parsed content. |
-| Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
-| Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
-| Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
-| Cell_6_1 | Cell_6_2 | Cel1l_6_3 | Cell_6_4 |
+| - | - | - | - |
 
-	
-- My immediate objective: write a minimal replica of the `cue vet`command, supporting the `options --concrete` and `--schema <schema def>` and expecting a `.cue` schema file and a `.json` data file.
+Above is a small sampling of functions seen, to say nothing of structs that are carried around - context, options, buildPlan, cue Value...
+
+It is difficult to find in the cue code places where decisions are made and results produced, or not.
 
 
 ## Cue command options
@@ -96,14 +94,32 @@ Here is a start, in no particular order:
 | --with-context | import as object with contextual data | y |y | y| y| y|
 | | | | | | | |
 
-## --schema
+## Investigating
 
-```
-cue % grep.go '\-\-schema'                                                                                                        [try-split-off-api L|✚1…1]
-cmd/cue/cmd/common.go:597:                              "cannot use --schema/-d with flag more than one schema")
-cmd/cue/cmd/common.go:647:                              "-d/--schema flag specified without a schema")
-cmd/cue/cmd/common.go:704:              b.schema, err = parser.ParseExpr("--schema", s)
-cmd/cue/cmd/help.go:125:If the --schema/-d is specified, data files are not merged, and
-cmd/cue/cmd/help.go:158:when used in combination with the --schema/-d flag.
-```
-would code at `cmd/cue/cmd/common.go:704` be of any use?
+	
+- My immediate objective: write a minimal replica of the `cue vet`command, supporting the `options --concrete` and `--schema <schema def>` and expecting a `.cue` schema file and a `.json` data file.
+
+The first naive attempt at unifying a schema with the .cue and .json files is no good.
+
+What next?
+
+Stepping into cue with the debugger works, but it is difficult to see just what is happenning and where.
+
+Read the code? The general docs?
+
+### The tutorial samples are few, and may use deprecated funcs or types
+
+So, what should we do?
+
+Start collecting the approved (not deprecated) code snippets, assorted with tests, and use those for the further app development.
+
+
+### The Cue Go API: what is it?
+
+- announcements...
+- indeed, third partios build on it: hofstetter, dragon, others?
+
+So, what is the extent of the Cue Go API v0.5.0?
+
+- the set of functions and types shown in the official tutorials (excluding or replacing the deprecated ones)?
+- the set of functions and types used by the cue command implmementation?

@@ -1,9 +1,0 @@
-{
-    "project": {
-        "guid": "2PYeGTQPCSRnGu9JAEW5Gml1W9j",
-        "name": "Uzuverse · St-Gingolphe"
-    },
-    "cli": {
-        "config": ".uzu/project.json"
-    }
-}
